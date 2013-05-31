@@ -1,0 +1,41 @@
+//  prefix()
+//  Adds appropriate vendor prefix(es) to a $property
+//
+//  PARAMS:
+//    $property     required
+//    $value        required
+//
+//  EXAMPLES:
+//    @include prefix(border-radius, 3px)
+//    #=> -webkit-border-radius: 3px;
+//    #=> border-radius: 3px;
+
+@mixin prefix($property, $value) {
+  
+  // TODO: keyframes
+
+  $clients: webkit moz ms o !default;
+  
+  @if $property == border-radius    { $clients: webkit; }
+  @if $property == box-shadow       { $clients: webkit; }
+  @if $property == gradient         { $clients: webkit moz o; }
+  @if $property == rotate           { }
+  @if $property == scale            { }
+  @if $property == perspective      { $clients: webkit moz ms; }
+  @if $property == transform        { $clients: webkit moz ms; }
+  @if $property == transform-style  { $clients: webkit moz ms; }
+  @if $property == transition       { $clients: webkit moz o; }
+  @if $property == box-sizing       { $clients: webkit moz o; }
+  @if $property == background-size  { $clients: webkit; }
+  @if $property == column-count     { $clients: webkit moz; }
+  @if $property == column-gap       { $clients: webkit moz; }
+  @if $property == animation        { $clients: webkit moz o; }
+  @if $property == tabsize          { $clients: moz o; }
+  
+  @each $client in $clients {
+    -#{$client}-#{$property}: $value;
+  }
+  
+  #{$property}: $value;
+  
+}
