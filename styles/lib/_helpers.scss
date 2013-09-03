@@ -31,6 +31,7 @@
   @if $property == column-gap       { $clients: webkit moz; }
   @if $property == animation        { $clients: webkit moz o; }
   @if $property == tabsize          { $clients: moz o; }
+  @if $property == hyphens          { }
   
   @each $client in $clients {
     -#{$client}-#{$property}: $values;
