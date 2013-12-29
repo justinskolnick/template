@@ -18,7 +18,7 @@
   
   @if $property == border-radius    { $clients: webkit; }
   @if $property == box-shadow       { $clients: webkit; }
-  @if $property == gradient         { $clients: webkit moz o; }
+  @if $property == linear-gradient  { $clients: webkit moz o; }
   @if $property == rotate           { }
   @if $property == scale            { }
   @if $property == perspective      { $clients: webkit moz ms; }
@@ -31,12 +31,36 @@
   @if $property == column-gap       { $clients: webkit moz; }
   @if $property == animation        { $clients: webkit moz o; }
   @if $property == tabsize          { $clients: moz o; }
-  @if $property == hyphens          { }
   
   @each $client in $clients {
-    -#{$client}-#{$property}: $values;
+    @if $property == linear-gradient {
+      background: -#{$client}-linear-gradient( $values );
+    }
+    @else {
+      -#{$client}-#{$property}: $values;
+    }
   }
   
-  #{$property}: $values;
+  @if $property == linear-gradient {
+    background: linear-gradient( $values );
+  }
+  @else {
+    #{$property}: $values;  
+  }
   
+}
+
+
+//  image()
+
+@function image($filename) {
+  @return url( $image-directory + $filename );
+}
+
+
+// image-set
+
+@mixin image-set($filename) {
+  background-image: image($filename);
+  background-image: -webkit-image-set( image( $filename ) 1x, image(str-insert( $filename, '@2x', -5) ) 2x );
 }
