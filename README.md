@@ -1,4 +1,4 @@
 template
 ========
 
-Everybody's got a boilerplate.
+Everybody's got one.
