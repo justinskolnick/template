@@ -1,10 +1,10 @@
 //  image()
 
 @function image($filename) {
-  @return url( $image-directory + $filename );
+  @return url($image-directory + $filename);
 }
 
-// image-set
+// image-set()
 
 @mixin image-set($filename) {
   background-image: image($filename);
