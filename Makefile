@@ -1,11 +1,11 @@
-JS_BASE =       scripts/default.js
-JS_ALL =        scripts/default.all.js
-JS_MIN =        scripts/default.min.js
+JS_BASE =       public/scripts/default.js
+JS_ALL =        public/scripts/default.all.js
+JS_MIN =        public/scripts/default.min.js
 
 JS_FILES =      $(JS_BASE)
 
-CSS_BASE =			styles/default.scss
-CSS_FINAL =			styles/default.css
+CSS_BASE =			public/styles/default.scss
+CSS_FINAL =			public/styles/default.css
 
 all: concat minify
 
